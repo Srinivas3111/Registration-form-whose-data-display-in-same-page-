@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TASK:2</title>
+  <style>
+    body {
+      display: flex;
+      align-items: flex-start;
+    
+      background-image: url(https://rare-gallery.com/uploads/posts/374295-4k-wallpaper.jpg);
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size:1200px;
+      background-color: black;
+
+      
+    }
+    #one{
+      text-align: center;
+      font-size:20px;
+      color: black;}
+     
+    #name,#age,#phone,#gender,#gmail{
+      background-color:greenyellow;
+    }
+    
+    .container {
+      width: 50%;
+      margin: 20px;
+      background-color:yellow;
+      margin-top:7%;
+      border-style: solid;
+      /* border-color: red; */
+      
+    }
+    .form-container {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .form-field {
+      display: flex;
+      flex-direction: column;
+      
+    }
+    .form-field label {
+      font-weight: bold;
+    }
+
+    #output-container {
+      width: 50%;
+      
+      margin-top: 6%; 
+      color: white;
+      
+    }
+
+    #output-container h2 {
+      margin-bottom: 10px;
+      
+    }
+
+    #output {
+      border: 1px solid #ccc;
+      padding: 10px;
+      background-color:chartreuse;
+      border-color: red;
+      border-width: 2px;
+      font-family: 'Times New Roman', Times, serif;
+    }
+    #output:hover{
+      background-color:gold;
+    }
+    #sub{
+      background-color:violet;
+      border-color: red;
+      
+    }
+    #sub:hover{
+      background-color:lime;
+      border-color:orangered;
+      
+    }
+   
+  </style>
+</head>
+<body>
+
+  <div class="container">
+  
+    <div class="form-container"><form>
+            <div class="form-field">
+        <label for="name"  >Name:</label>
+        <input type="text" id="name" required>
+      </div></form>
+      <div class="form-field">
+        <label for="age">Age:</label>
+        <input type="number" id="age" required>
+      </div>
+      <div class="form-field">
+        <label for="phone">Phone:</label>
+        <input type="tel" id="phone" required>
+      </div>
+      <div class="form-field">
+        <label for="gmail">Email:</label>
+        <input type="email" id="gmail" required>
+      </div>
+      <div class="form-field">
+        <label>Skills</label>
+        <label for="checkbox1">
+          <input type="checkbox" id="checkbox1"> HTML
+        </label>
+        <label for="checkbox2">
+          <input type="checkbox" id="checkbox2"> CSS
+        </label>
+        <label for="checkbox3">
+          <input type="checkbox" id="checkbox3"> JAVASCRIPT
+        </label>
+      </div>
+      <div class="form-field">
+        <label for="gender">GENDER</label>
+        <select id="gender" required>
+          <option  id=" gentwo"value="" disabled selected>Select your gender</option>
+          <option value="male">MALE</option>
+          <option value="female">Female</option>
+          <option value="other">Other</option>
+        </select>
+      </div>
+      <button id="sub" onclick="displayData()">SUBMIT</button>
+    </div>
+  </div>
+
+  <div id="output-container">
+    <h2>Enrolled students:</h2>
+    <div id="output"></div>
+  </div>
+
+  <script>
+    function displayData() {
+      var name = document.getElementById("name").value;
+      var age = document.getElementById("age").value;
+      var phone = document.getElementById("phone").value;
+      var gmail = document.getElementById("gmail").value;
+      var checkboxes = document.querySelectorAll('input[type="checkbox"]:checked');
+      var checkboxValues = Array.from(checkboxes).map(function(checkbox) {
+        return checkbox.parentNode.textContent.trim();
+      });
+      var gender = document.getElementById("gender").value;
+
+      var outputContainer = document.getElementById("output");
+      outputContainer.innerHTML = `
+        <p><strong>Name:</strong> ${name}</p>
+        <p><strong>Age:</strong> ${age}</p>
+        <p><strong>Phone:</strong> ${phone}</p>
+        <p><strong>Email:</strong> ${gmail}</p>
+        <p><strong>Gender:</strong> ${gender}</p>
+        <p><strong>Checkbox:</strong> ${checkboxValues.join(", ")}</p>
+      `;
+    }
+  </script>
+</body>
+</html>
